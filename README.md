@@ -2,7 +2,7 @@
 
 [![Maintenance](https://img.shields.io/maintenance/yes/2025.svg)]()
 
-**main** branch is development latest (unstable)
+**main** branch: development (latest, unstable)
 
 ### Developers:
 - [joekamprad](https://github.com/killajoe)
@@ -11,11 +11,10 @@
 
 ### Contributors:
 - [keybreak](https://github.com/keybreak)
+- ..and our beloved community
 
-..and our beloved community
-
-This ISO is based on hugely modified Arch-ISO to provide Installation Environment for EndeavourOS.  
-More info at [EndeavourOS-GitHub-Development](https://endeavouros-team.github.io/EndeavourOS-Development/)
+This ISO is based on a heavily modified Arch-ISO, designed to provide the installation environment for EndeavourOS.  
+For more information, please visit the [EndeavourOS-GitHub-Development page](https://endeavouros-team.github.io/EndeavourOS-Development/).
 
 
 ## Resources:
@@ -28,23 +27,23 @@ More info at [EndeavourOS-GitHub-Development](https://endeavouros-team.github.io
 - [Telegram help-chat](https://t.me/Endeavouros)
 - [Twitter news](https://twitter.com/OsEndeavour)
 
-Our journey wouldn't be made possible without the generosity of our [Open Collective community](https://opencollective.com/endeavouros)!
+Our journey is made possible the generosity of our [Open Collective community](https://opencollective.com/endeavouros)!
 
 
-### Development source
+### Development Source
 
 - [EndeavourOS-ISO source](https://github.com/endeavouros-team/EndeavourOS-ISO) (Live environment with KDE-Desktop)
 - [Calamares {EndeavourOS fork}](https://github.com/endeavouros-team/calamares) (installer framework)
 
 
-### Base source
+### Base Source
 
 - [Arch-ISO](https://gitlab.archlinux.org/archlinux/archiso)
 - [Calamares](https://github.com/calamares/calamares)
 
 
 
-# Boot options
+# Boot Options
 
 Systemd-boot for UEFI systems:  
 <img src="https://raw.githubusercontent.com/endeavouros-team/screenshots/master/Apollo/apollo-systemdboot.png" alt="drawing" width="600"/>
@@ -54,30 +53,36 @@ Bios-boot (syslinux) for legacy systems:
 
 
 
-# How to build ISO
+# How to Build the ISO
 
-You need to use an installed EndeavourOS system or any archbased system with EndeavourOS [repository](https://github.com/endeavouros-team/mirrors) enabled.
+You must use an existing EndeavourOS system, or any Arch-based system with the [EndeavourOS repository](https://github.com/endeavouros-team/mirrors) enabled, to build an EndeavourOS ISO. This is because the installer's packages and dependencies will be fetched from the EndeavourOS repository.
 
-As the installer packages and needed dependencies will get installed from EndeavourOS repository.
+More general info: [EndeavourOS Development Information](https://endeavouros-team.github.io/EndeavourOS-Development)
 
-General information: 
+You can also read the [CHANGELOG](https://github.com/endeavouros-team/EndeavourOS-ISO/blob/main/CHANGELOG.md) to learn more about the latest changes before you start.
 
-https://endeavouros-team.github.io/EndeavourOS-Development/
+---
 
-Read the changelog before starting to learn about latest changes:
+### Step 1. - Install Build Dependencies
 
-https://github.com/endeavouros-team/EndeavourOS-ISO/blob/main/CHANGELOG.md
-
-### Install build dependencies
-
+Run the following command on your existing system:
 ```
 sudo pacman -S archiso git squashfs-tools --needed
 ```
-It is recommended to reboot after these changes.
+It's recommended to reboot your system after letting this command complete.
 
-### Build
+### Step 2. - Prepare to Build
 
-##### 1. Prepare
+To build the ISO using the latest release state, download its tagged tarball from this repo.
+For example, to use the stable release 23.11.1.2 (Galileo KDE):
+- Download its tarball
+```wget https://github.com/endeavouros-team/EndeavourOS-ISO/archive/refs/tags/23.11.1.2.tar.gz```
+- Extract the tarball
+```tar -xvf 23.11.1.2.tar.gz```
+Navigate into the folder
+```cd "EndeavourOS-ISO-23.11.1.2"```
+- Run the preparation script
+```./prepare.sh```
 
 If you want the last release state to rebuild the ISO, you need to use a specifically tagged tarball from here:
 https://github.com/endeavouros-team/EndeavourOS-ISO/tags
@@ -86,13 +91,12 @@ If not, it will default to using the latest "unstable" development state.
 
 example using latest **stable** release (23.11.1.2 Galileo KDE Release) 
 
-**Warning:** do **not** use the zip tarball, in case this causes issues with symlinks.
+**Warning:** do **not** use the .zip tarballs, as they may cause issues with symlinks.
 
 ```
-wget https://github.com/endeavouros-team/EndeavourOS-ISO/archive/refs/tags/23.11.1.2.tar.gz
-tar -xvf 23.11.1.2.tar.gz
-cd "EndeavourOS-ISO-23.11.1.2"
-./prepare.sh
+
+
+
 ```
 ### Or use latest **unstable** development branch using by cloning this repo using git:
 
